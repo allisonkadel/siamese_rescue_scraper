@@ -3,12 +3,15 @@
 class SiameseRescueScraper::CLI
 
   def call
+    hello
     list_cats
     menu
     goodbye
   end
 
-
+  def hello
+    puts "Welcome to the Siamese Cat Rescue Center Virginia Database."
+  end
 
   def list_cats
     puts "Siamese Cats Available:"
