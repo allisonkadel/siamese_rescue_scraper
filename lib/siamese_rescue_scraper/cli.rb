@@ -5,7 +5,10 @@ class SiameseRescueScraper::CLI
   def call
     list_cats
     menu
+    goodbye
   end
+
+
 
   def list_cats
     puts "Siamese Cats Available:"
@@ -28,6 +31,10 @@ class SiameseRescueScraper::CLI
         puts "More info on Powder..."
       end
     menu unless input == "exit"
+  end
+
+  def goodbye
+    puts "See you next time. Take care!"
   end
 
 end
