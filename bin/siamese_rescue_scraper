@@ -1,3 +1,7 @@
+# load the interpreter and then load the environment
+
 #!usr/bin/env ruby
 
-puts "Hello World"
+require './lib/siamese_rescue_scraper'
+
+SiameseRescueScraper::CLI.new.call # encapsulate all logic for the CLI interface into one object

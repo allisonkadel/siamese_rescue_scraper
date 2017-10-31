@@ -1,5 +1,3 @@
-require "siamese_rescue_scraper/version"
-
-module SiameseRescueScraper
-  # Your code goes here...
-end
+#This file acts as environment file
+require_relative "siamese_rescue_scraper/version"
+require_relative './siamese_rescue_scraper/cli'

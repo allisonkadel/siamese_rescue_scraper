@@ -1,3 +1,5 @@
+# CLI Controller - responsible for user interactions
+
 class SiameseRescueScraper::CLI
 
   def call
