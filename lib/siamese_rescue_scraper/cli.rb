@@ -14,7 +14,7 @@ class SiameseRescueScraper::CLI
   end
 
   def list_cats
-    Cat.all
+    @cats = SiameseRescueScraper::Cat.all
   end
 
   def menu
