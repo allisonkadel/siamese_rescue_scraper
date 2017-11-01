@@ -21,13 +21,9 @@ class SiameseRescueScraper::CLI
     puts "Enter the number of the cat you'd like more info on. Type 'exit' to leave program."
     input = gets.strip
       if input == "1"
-        puts "More info on Koda..."
+        puts "More info on #{@cats[0].name}"
       elsif input == "2"
-        puts "More info on Maya..."
-      elsif input == "3"
-        puts "More info on Max..."
-      elsif input == "4"
-        puts "More info on Powder..."
+        puts "More info on #{@cats[1].name}"
       end
     menu unless input == "exit"
   end
