@@ -1,6 +1,16 @@
 class SiameseRescueScraper::Cat
   attr_accessor :name, :id, :sex, :location, :point, :bio, :age, :requirements
 
+  #@@all = []
+
+  #def initialize(cat_hash)
+  #  cat_hash.each do |attribute, value|
+  #    self.send("#{attribute}=",value)
+  #  end
+  #  @@all << self
+  #end
+
+
   def initialize(name, sex, location, point, age)
     @name = name
     @id = id
@@ -14,6 +24,8 @@ class SiameseRescueScraper::Cat
 
   def self.all
     #return array of Cat instances
+    #scrape SR and return Cats based on data
+
     name1, sex1, location1, point1, age1 = "Koda", "Female", "Virginia Center", "Seal", "9 Yrs 6 Mon"
     name2, sex2, location2, point2, age2 = "Maya", "Female", "Florida", "Tortie", "9 Yrs 4 Mon"
     cat1 = self.new(name1, sex1, location1, point1, age1)
