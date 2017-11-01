@@ -14,11 +14,7 @@ class SiameseRescueScraper::CLI
   end
 
   def list_cats
-    puts "Siamese Cats Available:"
-    puts "1 Koda - Virginia Center - 9 Yrs 6 Mon "
-    puts "2 Maya - Florida - 9 Yrs 4 Mon"
-    puts "3 Max - Virginia - 10 Yrs 5 Mon"
-    puts "4 Powder - North Carolina - 3 Yrs 2 Mon"
+    Cat.all
   end
 
   def menu
