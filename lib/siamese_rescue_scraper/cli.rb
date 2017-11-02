@@ -1,4 +1,6 @@
 # CLI Controller - responsible for user interactions
+require 'nokogiri'
+require 'pry'
 
 class SiameseRescueScraper::CLI
 
@@ -21,7 +23,9 @@ class SiameseRescueScraper::CLI
   end
 
   def make_cats #returns an array of cats in the form of hashes with key/value attributes
-    cats_array = Scraper.scrape(URL)
+    cats_array = SiameseRescueScraper::Scraper.scrape(URL)
+    puts cats_array
+    binding.pry
     #Cat.create_from_data(cats_array)
   end
 
