@@ -2,8 +2,11 @@
 
 class SiameseRescueScraper::CLI
 
+  URL = "https://va.siameserescue.org/webbuild.php?type=adoptme&page=1&state="
+
   def call
     hello
+    make_cats
     list_cats
     menu
     goodbye
@@ -15,6 +18,11 @@ class SiameseRescueScraper::CLI
 
   def list_cats
     @cats = SiameseRescueScraper::Cat.all
+  end
+
+  def make_cats #returns an array of cats in the form of hashes with key/value attributes
+    cats_array = Scraper.scrape(URL)
+    #Cat.create_from_data(cats_array)
   end
 
   def menu
