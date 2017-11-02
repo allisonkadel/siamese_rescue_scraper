@@ -31,13 +31,15 @@ class SiameseRescueScraper::CLI
     puts "Enter the number of the cat you'd like to read the bio for. Type 'exit' to leave program."
     input = gets.strip
       if input.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
+        puts ""
         puts SiameseRescueScraper::Cat.all[input.to_i-1].bio
+        puts ""
       end
     menu unless input == "exit"
   end
 
   def goodbye
-    puts "See you next time. Take care!"
+    puts "\nSee you next time. Take care!"
   end
 
 end
