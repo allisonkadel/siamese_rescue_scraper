@@ -17,11 +17,13 @@ class SiameseRescueScraper::Scraper
 
   def self.scrape_page(url)
     index_page = Nokogiri::HTML(open(url))
-    index_page.css(".galleryNB").each do |card|
+    #binding.pry
+    index_page.css("table.gallery").each do |card|
 
-      name = card.css("span")[0].text
-      id = card.css("span")[1].text
-      loc = card.css("span")[2].text
+      name = card.css(".galleryNB span")[0].text
+      id = card.css(".galleryNB span")[1].text
+      loc = card.css(".galleryNB span")[2].text
+      bio = card.css("td.gallery span").text
 #      sex = card.css("span")[3].text
 #      age = card.css("span")[4].text
 #      weight = card.css("span")[5].text
@@ -29,8 +31,9 @@ class SiameseRescueScraper::Scraper
 #      points = card.css("span")[7].text
 #      datin = card.css("span")[8].text
 
-      @@cats << {name: name, id: id, loc: loc}
+      @@cats << {name: name, id: id, loc: loc, bio: bio}
     end
+    @@cats
   end
 
 #  def self.scrape(url)
