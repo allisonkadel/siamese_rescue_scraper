@@ -19,7 +19,7 @@ class SiameseRescueScraper::CLI
   end
 
   def list_cats
-    @cats = SiameseRescueScraper::Cat.all
+    @cats = SiameseRescueScraper::Cat.display
   end
 
   def make_cats #returns an array of cats in the form of hashes with key/value attributes

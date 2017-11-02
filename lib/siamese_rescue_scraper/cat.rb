@@ -27,11 +27,7 @@ class SiameseRescueScraper::Cat
   #  @requirements = requirements
   #end
 
-  def self.all
-    #return array of Cat instances
-    #scrape SR and return Cats based on data
-
-    @@cats
+  def self.display
     @@cats.each_with_index do |cat, index|
       puts "#{index+1} #{cat.name} - #{cat.id} - #{cat.loc}"
     end
