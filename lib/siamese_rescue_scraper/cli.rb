@@ -28,14 +28,28 @@ class SiameseRescueScraper::CLI
   end
 
   def menu
-    puts "Enter the number of the cat you'd like to read the bio for. Type 'exit' to leave program."
-    input = gets.strip
-      if input.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
-        puts ""
-        puts SiameseRescueScraper::Cat.all[input.to_i-1].bio
-        puts ""
+    puts "To list all cats, enter 'list'"
+    puts "To search for cats by location, enter 'search by location'"
+    input1 = gets.strip
+
+    if input1 == "list"
+      list_cats
+      puts "Enter the number of the cat you would like to read the bio for. Type 'exit' to leave program."
+      input2 = gets.strip
+        if input2.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
+          puts ""
+          puts SiameseRescueScraper::Cat.all[input.to_i-1].bio
+          puts ""
+        end
+      menu unless input2 == "exit"
+
+    elsif input1 == "search by location"
+      puts "Enter one of the following:\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
+      input3 = gets.strip
+      for match in SiameseRescueScraper::Cat.search_by_location(input3)
+        puts match.name
       end
-    menu unless input == "exit"
+    end
   end
 
   def goodbye

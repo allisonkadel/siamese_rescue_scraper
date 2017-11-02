@@ -26,4 +26,15 @@ class SiameseRescueScraper::Cat
     @@all
   end
 
+  def self.search_by_location(location)
+    matches = []
+    for cat in @@all
+      if cat.loc == location
+        matches << cat
+      end
+    end
+    matches
+  end
+
+
 end
