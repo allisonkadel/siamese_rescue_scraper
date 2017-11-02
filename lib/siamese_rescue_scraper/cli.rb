@@ -24,9 +24,7 @@ class SiameseRescueScraper::CLI
 
   def make_cats #returns an array of cats in the form of hashes with key/value attributes
     cats_array = SiameseRescueScraper::Scraper.scrape(URL)
-    puts cats_array
-    binding.pry
-    #Cat.create_from_data(cats_array)
+    SiameseRescueScraper::Cat.create_from_data(cats_array)
   end
 
   def menu

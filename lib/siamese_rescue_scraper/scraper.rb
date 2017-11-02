@@ -7,7 +7,6 @@ class SiameseRescueScraper::Scraper
     cats = []
     index_page.css(".galleryNB").each do |card|
 
-      binding.pry
       name = card.css("span")[0].text
       id = card.css("span")[1].text
       loc = card.css("span")[2].text
@@ -22,7 +21,6 @@ class SiameseRescueScraper::Scraper
         #attr = self.send("#{card.css("b")[i+1].text.gsub(/[^a-z]/i, '')}=","#{card.css("span")[i].text}")
         #cat << attr
     end
-    binding.pry
     cats
   end
 
