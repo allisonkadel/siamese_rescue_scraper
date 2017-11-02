@@ -1,13 +1,13 @@
 class SiameseRescueScraper::Cat
   attr_accessor :name, :id, :sex, :loc, :point, :bio, :age, :requirements
 
-  @@cats = []
+  @@all = []
 
   def initialize(cat_hash)
     cat_hash.each do |attribute, value|
       self.send("#{attribute}=",value)
     end
-    @@cats << self
+    @@all << self
   end
 
   def self.create_from_data(cats_array)
@@ -28,7 +28,7 @@ class SiameseRescueScraper::Cat
   #end
 
   def self.display
-    @@cats.each_with_index do |cat, index|
+    @@all.each_with_index do |cat, index|
       puts "#{index+1} #{cat.name} - #{cat.id} - #{cat.loc}"
     end
 
