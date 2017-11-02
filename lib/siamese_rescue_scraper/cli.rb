@@ -28,12 +28,10 @@ class SiameseRescueScraper::CLI
   end
 
   def menu
-    puts "Enter the number of the cat you'd like more info on. Type 'exit' to leave program."
+    puts "Enter the number of the cat you'd like to read the bio for. Type 'exit' to leave program."
     input = gets.strip
-      if input == "1"
-        puts "More info on #{@cats[0].name}"
-      elsif input == "2"
-        puts "More info on #{@cats[1].name}"
+      if input.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
+        puts "More info on cat #{input}, #{SiameseRescueScraper::Cat.all[input.to_i-1].name}"
       end
     menu unless input == "exit"
   end

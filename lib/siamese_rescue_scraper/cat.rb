@@ -16,22 +16,14 @@ class SiameseRescueScraper::Cat
     end
   end
 
-  #def initialize(name, sex, location, point, age)
-  #  @name = name
-  #  @id = id
-  #  @sex = sex
-  #  @location = location
-  #  @point = point
-  #  @bio = bio
-  #  @age = age
-  #  @requirements = requirements
-  #end
-
   def self.display
     @@all.each_with_index do |cat, index|
       puts "#{index+1} #{cat.name} - #{cat.id} - #{cat.loc}"
     end
+  end
 
+  def self.all
+    @@all
   end
 
 end
