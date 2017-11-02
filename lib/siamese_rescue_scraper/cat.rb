@@ -16,8 +16,8 @@ class SiameseRescueScraper::Cat
     end
   end
 
-  def self.display
-    @@all.each_with_index do |cat, index|
+  def self.display_matches(matches_array)
+    matches_array.each_with_index do |cat, index|
       puts "#{index+1} #{cat.name} - #{cat.id} - #{cat.loc}"
     end
   end

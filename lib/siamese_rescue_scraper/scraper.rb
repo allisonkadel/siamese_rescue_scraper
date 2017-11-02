@@ -17,7 +17,6 @@ class SiameseRescueScraper::Scraper
 
   def self.scrape_page(url)
     index_page = Nokogiri::HTML(open(url))
-    binding.pry
     index_page.css("table.gallery").each do |card|
 
       name = card.css(".galleryNB span")[0].text

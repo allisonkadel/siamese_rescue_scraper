@@ -9,7 +9,6 @@ class SiameseRescueScraper::CLI
   def call
     hello
     make_cats
-    list_cats
     menu
     goodbye
   end
@@ -18,9 +17,9 @@ class SiameseRescueScraper::CLI
     puts "Welcome to the Siamese Cat Rescue Center Virginia Database."
   end
 
-  def list_cats
-    @cats = SiameseRescueScraper::Cat.display
-  end
+  #def list_cats
+  #  @cats = SiameseRescueScraper::Cat.display
+  #end
 
   def make_cats #returns an array of cats in the form of hashes with key/value attributes
     cats_array = SiameseRescueScraper::Scraper.scrape(URL)
@@ -33,15 +32,15 @@ class SiameseRescueScraper::CLI
     input1 = gets.strip
 
     if input1 == "list"
-      list_cats
-      puts "Enter the number of the cat you would like to read the bio for. Type 'exit' to leave program."
+      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
+      puts "Enter the number of the cat you would like to read the bio for. Type 'exit' to go back or leave the program."
       input2 = gets.strip
         if input2.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
           puts ""
-          puts SiameseRescueScraper::Cat.all[input.to_i-1].bio
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].bio
           puts ""
         end
-      menu unless input2 == "exit"
+      #menu unless input2 == "exit"
 
     elsif input1 == "search by location"
       puts "Enter one of the following:\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
@@ -50,6 +49,7 @@ class SiameseRescueScraper::CLI
         puts match.name
       end
     end
+    menu unless input1 == "exit"
   end
 
   def goodbye
