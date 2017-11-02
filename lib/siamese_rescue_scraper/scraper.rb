@@ -1,7 +1,9 @@
 require 'open-uri'
 
 class SiameseRescueScraper::Scraper
+  #should I make these methods class or instance?
 
+  @@cats = []
 
   def self.scrape(url)
     #this should scrape for number of pages and execute .scrape_page that many times
@@ -10,11 +12,11 @@ class SiameseRescueScraper::Scraper
     for number in 1..number
       self.scrape_page("https://va.siameserescue.org/webbuild.php?type=adoptme&page=#{number}&state=")
     end
+    @@cats
   end
 
   def self.scrape_page(url)
     index_page = Nokogiri::HTML(open(url))
-    cats = []
     index_page.css(".galleryNB").each do |card|
 
       name = card.css("span")[0].text
@@ -27,9 +29,8 @@ class SiameseRescueScraper::Scraper
 #      points = card.css("span")[7].text
 #      datin = card.css("span")[8].text
 
-      cats << {name: name, id: id, loc: loc}
+      @@cats << {name: name, id: id, loc: loc}
     end
-    cats
   end
 
 #  def self.scrape(url)
