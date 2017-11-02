@@ -2,7 +2,17 @@ require 'open-uri'
 
 class SiameseRescueScraper::Scraper
 
+
   def self.scrape(url)
+    #this should scrape for number of pages and execute .scrape_page that many times
+    number = 3
+    #page = Nokogiri::HTML(open(url))
+    for number in 1..number
+      self.scrape_page("https://va.siameserescue.org/webbuild.php?type=adoptme&page=#{number}&state=")
+    end
+  end
+
+  def self.scrape_page(url)
     index_page = Nokogiri::HTML(open(url))
     cats = []
     index_page.css(".galleryNB").each do |card|
@@ -17,9 +27,7 @@ class SiameseRescueScraper::Scraper
 #      points = card.css("span")[7].text
 #      datin = card.css("span")[8].text
 
-      cats << {name: name, id: id, loc: loc}#, sex: sex, age: age, weight: weight, declawed: declawed, points: points, datein: datein}
-        #attr = self.send("#{card.css("b")[i+1].text.gsub(/[^a-z]/i, '')}=","#{card.css("span")[i].text}")
-        #cat << attr
+      cats << {name: name, id: id, loc: loc}
     end
     cats
   end
