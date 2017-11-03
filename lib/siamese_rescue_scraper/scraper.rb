@@ -7,9 +7,7 @@ class SiameseRescueScraper::Scraper
 
   def self.scrape(url)
     first_page = Nokogiri::HTML(open(url))
-    binding.pry
     pages_num = first_page.css("a.notelink1").last.values[0].scan(/\d/).join.to_i
-    binding.pry
     for page_num in 1..pages_num
       self.scrape_page("https://va.siameserescue.org/webbuild.php?type=adoptme&page=#{page_num}&state=")
     end
@@ -18,13 +16,25 @@ class SiameseRescueScraper::Scraper
 
   def self.scrape_page(url)
     current_page = Nokogiri::HTML(open(url))
-    binding.pry
     current_page.css("table.gallery").each do |card|
 
       name = card.css(".galleryNB span")[0].text
       id = card.css(".galleryNB span")[1].text
       loc = card.css(".galleryNB span")[2].text
       bio = card.css("td.gallery span").text
+
+      info = current_page.css(".galleryNB").text
+      list = info.split("\n")
+      downsized = list[2..10]
+      downsized.map! do |element|
+        element = element.split("\u00A0")
+        element.delete("")
+        element
+        #t = "#{values[0].downcase}=, #{values[1]}"
+        #send("#{values.[0].downcase}=",values[1])
+      end
+      binding.pry
+
 #      sex = card.css("span")[3].text
 #      age = card.css("span")[4].text
 #      weight = card.css("span")[5].text
