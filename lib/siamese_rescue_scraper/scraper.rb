@@ -23,7 +23,9 @@ class SiameseRescueScraper::Scraper
       #loc = card.css(".galleryNB span")[2].text
       bio = card.css("td.gallery span").text
 
-      info = current_page.css(".galleryNB").text
+      #not looping properly!!!!
+      info = card.css(".galleryNB").text
+
       list = info.split("\n")
       downsized = list[2..10]
       downsized.map! do |element|
@@ -43,8 +45,6 @@ class SiameseRescueScraper::Scraper
       declawed = downsized[6][1]
       points = downsized[7][1]
       datein = downsized[8].join.split(":")[1]
-
-      binding.pry
 
       @@cats << {name: name, id: id, loc: loc, sex: sex, age: age, weight: weight, declawed: declawed, points: points, datein: datein, bio: bio}
     end

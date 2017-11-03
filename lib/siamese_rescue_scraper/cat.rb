@@ -16,8 +16,9 @@ class SiameseRescueScraper::Cat
   end
 
   def self.display_matches(matches_array)
+    puts "Displaying cat's name, age, and point:"
     matches_array.each_with_index do |cat, index|
-      puts "#{index+1} #{cat.name} - #{cat.id} - #{cat.loc}"
+      puts "#{index+1} #{cat.name} --- #{cat.age} --- #{cat.points}"
     end
   end
 
