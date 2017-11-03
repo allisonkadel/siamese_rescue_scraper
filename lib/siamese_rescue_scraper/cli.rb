@@ -14,7 +14,7 @@ class SiameseRescueScraper::CLI
   end
 
   def hello
-    puts "Welcome to the Siamese Cat Rescue Center Virginia Database."
+    puts "\nWelcome to the Siamese Cat Rescue Center Virginia Database."
   end
 
   #def list_cats
@@ -27,13 +27,13 @@ class SiameseRescueScraper::CLI
   end
 
   def menu
-    puts "To list all cats, enter 'list'"
-    puts "To search for cats by location, enter 'search by location'"
+    puts "\n---> Enter 'list' to list all cats"
+    puts "---> Enter 'search by location' to search for cats by location"
     input1 = gets.strip
 
     if input1 == "list"
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
-      puts "Enter the number of the cat you would like to read the bio for. Type 'exit' to go back or leave the program."
+      puts "\nIf you would like more information on any cat, enter a number. Type 'exit' to go back or leave the program."
       input2 = gets.strip
         if input2.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
           puts ""
@@ -43,7 +43,7 @@ class SiameseRescueScraper::CLI
       #menu unless input2 == "exit"
 
     elsif input1 == "search by location"
-      puts "Enter one of the following:\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
+      puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
       input3 = gets.strip
       for match in SiameseRescueScraper::Cat.search_by_location(input3)
         puts match.name
