@@ -6,18 +6,20 @@ class SiameseRescueScraper::Scraper
   @@cats = []
 
   def self.scrape(url)
-    #this should scrape for number of pages and execute .scrape_page that many times
-    number = 3
-    #page = Nokogiri::HTML(open(url))
-    for number in 1..number
-      self.scrape_page("https://va.siameserescue.org/webbuild.php?type=adoptme&page=#{number}&state=")
+    first_page = Nokogiri::HTML(open(url))
+    binding.pry
+    pages_num = first_page.css("a.notelink1").last.values[0].scan(/\d/).join.to_i
+    binding.pry
+    for page_num in 1..pages_num
+      self.scrape_page("https://va.siameserescue.org/webbuild.php?type=adoptme&page=#{page_num}&state=")
     end
     @@cats
   end
 
   def self.scrape_page(url)
-    index_page = Nokogiri::HTML(open(url))
-    index_page.css("table.gallery").each do |card|
+    current_page = Nokogiri::HTML(open(url))
+    binding.pry
+    current_page.css("table.gallery").each do |card|
 
       name = card.css(".galleryNB span")[0].text
       id = card.css(".galleryNB span")[1].text
