@@ -18,9 +18,9 @@ class SiameseRescueScraper::Scraper
     current_page = Nokogiri::HTML(open(url))
     current_page.css("table.gallery").each do |card|
 
-      name = card.css(".galleryNB span")[0].text
-      id = card.css(".galleryNB span")[1].text
-      loc = card.css(".galleryNB span")[2].text
+      #name = card.css(".galleryNB span")[0].text
+      #id = card.css(".galleryNB span")[1].text
+      #loc = card.css(".galleryNB span")[2].text
       bio = card.css("td.gallery span").text
 
       info = current_page.css(".galleryNB").text
@@ -33,16 +33,20 @@ class SiameseRescueScraper::Scraper
         #t = "#{values[0].downcase}=, #{values[1]}"
         #send("#{values.[0].downcase}=",values[1])
       end
+
+      name = downsized[0][1]
+      id = downsized[1][1]
+      loc = downsized[2][1]
+      sex = downsized[3][1]
+      age = downsized[4][1]
+      weight = downsized[5][1]
+      declawed = downsized[6][1]
+      points = downsized[7][1]
+      datein = downsized[8].join.split(":")[1]
+
       binding.pry
 
-#      sex = card.css("span")[3].text
-#      age = card.css("span")[4].text
-#      weight = card.css("span")[5].text
-#      declawed = card.css("span")[6].text
-#      points = card.css("span")[7].text
-#      datin = card.css("span")[8].text
-
-      @@cats << {name: name, id: id, loc: loc, bio: bio}
+      @@cats << {name: name, id: id, loc: loc, sex: sex, age: age, weight: weight, declawed: declawed, points: points, datein: datein, bio: bio}
     end
     @@cats
   end

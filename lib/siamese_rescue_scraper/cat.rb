@@ -1,6 +1,5 @@
 class SiameseRescueScraper::Cat
-  attr_accessor :name, :id, :sex, :loc, :point, :bio, :age, :requirements
-
+  attr_accessor :name, :id, :sex, :loc, :sex, :age, :weight, :points, :declawed, :datein, :bio
   @@all = []
 
   def initialize(cat_hash)
