@@ -46,5 +46,10 @@ class SiameseRescueScraper::Cat
     matches
   end
 
+  def self.search_by_age(age_group)
+    matches = []
+    binding.pry
+  end
+
 
 end

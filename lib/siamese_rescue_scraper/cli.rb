@@ -48,14 +48,18 @@ class SiameseRescueScraper::CLI
       input3 = gets.strip
       puts "\nHere are the cats available in #{input3}:"
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(input3))
-      end
 
     elsif input1 == "search by point"
-      puts "\nEnter one of the following:\n\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
+      puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
       input4 = gets.strip
       puts "\nHere are the #{input4} point cats:"
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(input4))
 
+    elsif input1 == "search by age group"
+      puts "\nEnter one of the following age groups:\nKitten\nAdult\nGeezer"
+      input5 = gets.strip
+      puts "\nHere are the #{input5}s:"
+      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_age(input5))
 
     end
 
@@ -64,7 +68,7 @@ class SiameseRescueScraper::CLI
   end
 
   def goodbye
-    puts "\nSee you next time. Take care!"
+    puts "\nSee you next time. Have a pawsome day!"
   end
 
 end
