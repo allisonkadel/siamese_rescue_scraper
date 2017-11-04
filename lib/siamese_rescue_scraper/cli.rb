@@ -47,17 +47,15 @@ class SiameseRescueScraper::CLI
       puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
       input3 = gets.strip
       puts "\nHere are the cats available in #{input3}:"
-      for match in SiameseRescueScraper::Cat.search_by_location(input3)
-        puts match.name
+      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(input3))
       end
 
     elsif input1 == "search by point"
       puts "\nEnter one of the following:\n\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
       input4 = gets.strip
       puts "\nHere are the #{input4} point cats:"
-      for match in SiameseRescueScraper::Cat.search_by_point(input4)
-        puts match.name
-      end
+      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(input4))
+
 
     end
 
