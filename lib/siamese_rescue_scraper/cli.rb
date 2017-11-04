@@ -14,7 +14,7 @@ class SiameseRescueScraper::CLI
   end
 
   def hello
-    puts "\nWelcome to the Siamese Cat Rescue Center Virginia Database."
+    puts "\nWelcome to the Siamese Cat Rescue Center Virginia Database. [Loading cats...]"
   end
 
   #def list_cats
