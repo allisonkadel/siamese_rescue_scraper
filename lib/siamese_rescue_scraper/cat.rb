@@ -9,12 +9,6 @@ class SiameseRescueScraper::Cat
     @@all << self
   end
 
-  def self.create_from_data(cats_array)
-    cats_array.each do |cat_hash|
-      self.new(cat_hash)
-    end
-  end
-
   def self.display_matches(matches_array)
     puts "Displaying cat's name, age, and point:"
     matches_array.each_with_index do |cat, index|
