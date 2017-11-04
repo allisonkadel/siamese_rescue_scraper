@@ -30,6 +30,7 @@ class SiameseRescueScraper::CLI
     puts "\n---> Enter 'list' to list all cats"
     puts "---> Enter 'search by location' to search for cats by location"
     puts "---> Enter 'search by point' to search for cats by point"
+    puts "---> Enter 'search by age' to search for cats by age group"
     input1 = gets.strip
 
     if input1 == "list"
@@ -39,6 +40,22 @@ class SiameseRescueScraper::CLI
         if input2.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
           puts ""
           puts SiameseRescueScraper::Cat.all[input2.to_i-1].bio
+          puts "\nID#: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].id
+          puts "\nSex: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].sex
+          puts "\nLocation: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].loc
+          puts "\nAge: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].age
+          puts "\nWeight: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].weight
+          puts "\nPoint: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].points
+          puts "\nDeclawed: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].declawed
+          puts "\nDate In: "
+          puts SiameseRescueScraper::Cat.all[input2.to_i-1].datein
           puts ""
         end
       #menu unless input2 == "exit"
@@ -55,7 +72,7 @@ class SiameseRescueScraper::CLI
       puts "\nHere are the #{input4} point cats:"
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(input4))
 
-    elsif input1 == "search by age group"
+    elsif input1 == "search by age"
       puts "\nEnter one of the following age groups:\nKitten\nAdult\nGeezer"
       input5 = gets.strip
       puts "\nHere are the #{input5}s:"

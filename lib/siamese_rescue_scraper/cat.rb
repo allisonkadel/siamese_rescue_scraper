@@ -1,5 +1,5 @@
 class SiameseRescueScraper::Cat
-  attr_accessor :name, :id, :sex, :loc, :sex, :age, :weight, :points, :declawed, :datein, :bio
+  attr_accessor :name, :id, :sex, :loc, :age, :weight, :points, :declawed, :datein, :bio
   @@all = []
 
   def initialize(cat_hash)
@@ -46,7 +46,7 @@ class SiameseRescueScraper::Cat
     matches
   end
 
-  def self.search_by_age(age_group)
+  def self.search_by_age(age_group) #need to convert age string to integer
     matches = []
     binding.pry
   end
