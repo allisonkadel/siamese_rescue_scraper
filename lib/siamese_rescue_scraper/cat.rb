@@ -36,5 +36,15 @@ class SiameseRescueScraper::Cat
     matches
   end
 
+  def self.search_by_point(point)
+    matches = []
+    for cat in @@all
+      if cat.points == point
+        matches << cat
+      end
+    end
+    matches
+  end
+
 
 end
