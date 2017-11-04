@@ -21,7 +21,7 @@ class SiameseRescueScraper::Scraper
       #name = card.css(".galleryNB span")[0].text
       #id = card.css(".galleryNB span")[1].text
       #loc = card.css(".galleryNB span")[2].text
-      bio = card.css("td.gallery span").text
+      bio = card.css("td.gallery span").text.strip
 
       #not looping properly!!!!
       info = card.css(".galleryNB").text
@@ -44,7 +44,7 @@ class SiameseRescueScraper::Scraper
       weight = downsized[5][1]
       declawed = downsized[6][1]
       points = downsized[7][1]
-      datein = downsized[8].join.split(":")[1]
+      datein = downsized[8].join.split(":")[1].strip
 
       @@cats << {name: name, id: id, loc: loc, sex: sex, age: age, weight: weight, declawed: declawed, points: points, datein: datein, bio: bio}
     end

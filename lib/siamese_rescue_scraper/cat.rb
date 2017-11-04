@@ -47,8 +47,13 @@ class SiameseRescueScraper::Cat
   end
 
   def self.search_by_age(age_group) #need to convert age string to integer
-    matches = []
-    binding.pry
+      matches = []
+      for cat in @@all
+        if (cat.age.include?("Yr") && age_group == "Adult") || (!cat.age.include?("Yr") && age_group == "Kitten")
+          matches << cat
+        end
+      end
+      matches
   end
 
 

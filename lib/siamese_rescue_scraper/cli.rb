@@ -73,7 +73,7 @@ class SiameseRescueScraper::CLI
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(input4))
 
     elsif input1 == "search by age"
-      puts "\nEnter one of the following age groups:\nKitten\nAdult\nGeezer"
+      puts "\nEnter one of the following age groups:\nKitten\nAdult"
       input5 = gets.strip
       puts "\nHere are the #{input5}s:"
       SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_age(input5))
