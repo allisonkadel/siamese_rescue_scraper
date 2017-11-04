@@ -1,7 +1,6 @@
 require 'open-uri'
 
 class SiameseRescueScraper::Scraper
-  #should I make these methods class or instance?
 
   @@cats = []
 
@@ -16,24 +15,15 @@ class SiameseRescueScraper::Scraper
 
   def self.scrape_page(url)
     current_page = Nokogiri::HTML(open(url))
+
     current_page.css("table.gallery").each do |card|
-
-      #name = card.css(".galleryNB span")[0].text
-      #id = card.css(".galleryNB span")[1].text
-      #loc = card.css(".galleryNB span")[2].text
       bio = card.css("td.gallery span").text.strip
+      attributes = card.css(".galleryNB").text.split("\n")[2..10]
 
-      #not looping properly!!!!
-      info = card.css(".galleryNB").text
-
-      list = info.split("\n")
-      downsized = list[2..10]
-      downsized.map! do |element|
-        element = element.split("\u00A0")
-        element.delete("")
-        element
-        #t = "#{values[0].downcase}=, #{values[1]}"
-        #send("#{values.[0].downcase}=",values[1])
+      attributes.map! do |attribute|
+        attribute = attribute.split("\u00A0")
+        attribute.delete("")
+        attribute
       end
 
       #This would write following code but it breaks
@@ -41,35 +31,19 @@ class SiameseRescueScraper::Scraper
       #  send("#{downsized[i][0].downcase.gsub(":","")}=",downsized[i][1])
       #end
 
-
-      name = downsized[0][1]
-      id = downsized[1][1]
-      loc = downsized[2][1]
-      sex = downsized[3][1]
-      age = downsized[4][1]
-      weight = downsized[5][1]
-      declawed = downsized[6][1]
-      points = downsized[7][1]
-      datein = downsized[8].join.split(":")[1].strip
+      name = attributes[0][1]
+      id = attributes[1][1]
+      loc = attributes[2][1]
+      sex = attributes[3][1]
+      age = attributes[4][1]
+      weight = attributes[5][1]
+      declawed = attributes[6][1]
+      points = attributes[7][1]
+      datein = attributes[8].join.split(":")[1].strip
 
       @@cats << {name: name, id: id, loc: loc, sex: sex, age: age, weight: weight, declawed: declawed, points: points, datein: datein, bio: bio}
     end
     @@cats
   end
-
-#  def self.scrape(url)
-#    index_page = Nokogiri::HTML(open(url))
-#    cats = []
-#    index_page.css(".galleryNB").each do |card|
-#      card.css("span").each do |cat_attr|
-#        cat = {}
-#
-#      cat_name = card.css("span").first.text
-#      cats << cat_name
-#    end
-#    binding.pry
-#    cats
-#  end
-
 
 end
