@@ -26,6 +26,37 @@ class SiameseRescueScraper::CLI
     SiameseRescueScraper::Cat.create_from_data(cats_array)
   end
 
+  def list_cats
+    SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
+  end
+
+  def more_info(matches)
+    #how do we reference the cat instance by number here? only way i can think is to pass in as argument
+    puts "\nIf you would like more information on any cat, enter a number. Type 'exit' to go back or leave the program."
+    input2 = gets.strip
+    if input2.to_i.between?(1,matches.length)
+      puts ""
+      puts matches[input2.to_i-1].bio
+      puts "\nID#: "
+      puts matches[input2.to_i-1].id
+      puts "\nSex: "
+      puts matches[input2.to_i-1].sex
+      puts "\nLocation: "
+      puts matches[input2.to_i-1].loc
+      puts "\nAge: "
+      puts matches[input2.to_i-1].age
+      puts "\nWeight: "
+      puts matches[input2.to_i-1].weight
+      puts "\nPoint: "
+      puts matches[input2.to_i-1].points
+      puts "\nDeclawed: "
+      puts matches[input2.to_i-1].declawed
+      puts "\nDate In: "
+      puts matches[input2.to_i-1].datein
+      puts ""
+    end
+  end
+
   def menu
     puts "\n---> Enter 'list' to list all cats"
     puts "---> Enter 'search by location' to search for cats by location"
@@ -34,7 +65,7 @@ class SiameseRescueScraper::CLI
     input1 = gets.strip
 
     if input1 == "list"
-      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
+      list_cats
       puts "\nIf you would like more information on any cat, enter a number. Type 'exit' to go back or leave the program."
       input2 = gets.strip
         if input2.to_i.between?(1,SiameseRescueScraper::Cat.all.length)
@@ -64,7 +95,8 @@ class SiameseRescueScraper::CLI
       puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
       input3 = gets.strip
       puts "\nHere are the cats available in #{input3}:"
-      SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(input3))
+      matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(input3))
+      self.more_info(matches)
 
     elsif input1 == "search by point"
       puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"

@@ -36,6 +36,12 @@ class SiameseRescueScraper::Scraper
         #send("#{values.[0].downcase}=",values[1])
       end
 
+      #This would write following code but it breaks
+      #for i in 0..7
+      #  send("#{downsized[i][0].downcase.gsub(":","")}=",downsized[i][1])
+      #end
+
+
       name = downsized[0][1]
       id = downsized[1][1]
       loc = downsized[2][1]
