@@ -56,40 +56,62 @@ class SiameseRescueScraper::CLI
   end
 
   def menu
-    puts "\n---> Enter 'list' to list all cats"
+    puts "\n---> Enter 'all' to list all cats"
     puts "---> Enter 'search by location' to search for cats by location"
     puts "---> Enter 'search by point' to search for cats by point"
     puts "---> Enter 'search by age' to search for cats by age group"
-    input1 = gets.strip
+    input = gets.strip
 
-    if input1 == "list"
-      matches1 = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
-      self.more_info(matches1)
+    if input == "list"
+      matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
+      self.more_info(matches)
       #menu unless input2 == "exit"
 
-    elsif input1 == "search by location"
+    elsif input == "search by location"
       puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
-      input3 = gets.strip
-      puts "\nHere are the cats available in #{input3}:"
-      matches3 = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(input3))
-      self.more_info(matches3)
+      response = gets.strip
+      puts "\nHere are the cats available in #{response}:"
+      matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_location(response))
+      self.more_info(matches)
 
-    elsif input1 == "search by point"
+    elsif input == "search by point"
       puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
-      input4 = gets.strip
+      response = gets.strip
       puts "\nHere are the #{input4} point cats:"
-      matches4 = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(input4))
-      self.more_info(matches4)
+      matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(response))
+      self.more_info(matches)
 
-    elsif input1 == "search by age"
+    elsif input == "search by age"
       puts "\nEnter one of the following age groups:\nKitten\nAdult"
-      input5 = gets.strip
-      puts "\nHere are the #{input5}s:"
-      matches5 = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_age(input5))
-      self.more_info(matches5)
-
+      response = gets.strip
+      puts "\nHere are the #{response}s:"
+      matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_age(response))
+      self.more_info(matches)
 
     end
+
+      #you have an input that is one of the above.
+
+
+=begin    if input == 'search by location'
+      puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
+      response = gets.strip
+      puts "\nHere are the cats available in #{response}:"
+    elsif input == 'search by point'
+      puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
+      response = gets.strip
+      puts "\nHere are the #{response} point cats:"
+    elsif input == 'search by age'
+      puts "\nEnter one of the following age groups:\nKitten\nAdult"
+      response = gets.strip
+      puts "\nHere are the #{response}s:"
+
+  end
+
+    matches_array = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.send("#{input.gsub("_"," ")}",))
+    self.more_info(matches_array)
+
+=end
 
   #  inputa = gets.strip
   #  def selection(var)
@@ -97,7 +119,7 @@ class SiameseRescueScraper::CLI
   #    matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.var(input))
   #    self.more_info(matches)
 
-    menu unless input1 == "exit"
+    menu unless input == "exit"
 
   end
 
