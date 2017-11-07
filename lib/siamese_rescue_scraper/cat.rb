@@ -50,5 +50,4 @@ class SiameseRescueScraper::Cat
       matches
   end
 
-
 end
