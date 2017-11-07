@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class SiameseRescueScraper::Scraper
 
   @@cats = []
