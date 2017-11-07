@@ -1,8 +1,7 @@
 #!usr/bin/env ruby
 
 #require "bundler/setup"
-#require "siamese_rescue_scraper"
 
-require './config/environment'
+require_relative '../config/environment'
 
 SiameseRescueScraper::CLI.new.call
