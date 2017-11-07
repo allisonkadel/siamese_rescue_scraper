@@ -17,10 +17,6 @@ class SiameseRescueScraper::CLI
     puts "\nWelcome to the Siamese Cat Rescue Center Virginia Database. [Loading cats...]"
   end
 
-  #def list_cats
-  #  @cats = SiameseRescueScraper::Cat.display
-  #end
-
   def make_cats
     cats_array = SiameseRescueScraper::Scraper.scrape(URL)
     for cat_hash in cats_array
@@ -29,7 +25,6 @@ class SiameseRescueScraper::CLI
   end
 
   def more_info(matches)
-    #how do we reference the cat instance by number here? only way i can think is to pass in as argument
     puts "\nIf you would like more information on any cat, enter a number. Type 'exit' to go back or leave the program."
     input2 = gets.strip
     if input2.to_i.between?(1,matches.length)
@@ -62,10 +57,9 @@ class SiameseRescueScraper::CLI
     puts "---> Enter 'search by age' to search for cats by age group"
     input = gets.strip
 
-    if input == "list"
+    if input == "all"
       matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.all)
       self.more_info(matches)
-      #menu unless input2 == "exit"
 
     elsif input == "search by location"
       puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
@@ -87,37 +81,7 @@ class SiameseRescueScraper::CLI
       puts "\nHere are the #{response}s:"
       matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_age(response))
       self.more_info(matches)
-
     end
-
-      #you have an input that is one of the above.
-
-
-=begin    if input == 'search by location'
-      puts "\nEnter one of the following:\n\nVirginia Center\nVirginia\nFlorida\nNorth Carolina\nMaryland\nPennsylvania\nTennessee\nIndiana\nSouth Carolina\nIllinois\nConnecticut"
-      response = gets.strip
-      puts "\nHere are the cats available in #{response}:"
-    elsif input == 'search by point'
-      puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
-      response = gets.strip
-      puts "\nHere are the #{response} point cats:"
-    elsif input == 'search by age'
-      puts "\nEnter one of the following age groups:\nKitten\nAdult"
-      response = gets.strip
-      puts "\nHere are the #{response}s:"
-
-  end
-
-    matches_array = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.send("#{input.gsub("_"," ")}",))
-    self.more_info(matches_array)
-
-=end
-
-  #  inputa = gets.strip
-  #  def selection(var)
-  #    input = gets.strip
-  #    matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.var(input))
-  #    self.more_info(matches)
 
     menu unless input == "exit"
 
