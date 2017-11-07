@@ -40,7 +40,7 @@ class SiameseRescueScraper::Cat
     matches
   end
 
-  def self.search_by_age(age_group) #need to convert age string to integer
+  def self.search_by_age(age_group)
       matches = []
       for cat in @@all
         if (cat.age.include?("Yr") && age_group == "Adult") || (!cat.age.include?("Yr") && age_group == "Kitten")

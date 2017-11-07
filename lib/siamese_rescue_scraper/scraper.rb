@@ -26,11 +26,6 @@ class SiameseRescueScraper::Scraper
         attribute
       end
 
-      #This would write following code but it breaks
-      #for i in 0..7
-      #  send("#{downsized[i][0].downcase.gsub(":","")}=",downsized[i][1])
-      #end
-
       name = attributes[0][1]
       id = attributes[1][1]
       loc = attributes[2][1]

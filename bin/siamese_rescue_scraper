@@ -1,10 +1,8 @@
-# load the interpreter and then load the environment
-
 #!usr/bin/env ruby
 
 #require "bundler/setup"
 #require "siamese_rescue_scraper"
 
-require './lib/siamese_rescue_scraper'
+require './config/environment'
 
-SiameseRescueScraper::CLI.new.call # encapsulate all logic for the CLI interface into one object
+SiameseRescueScraper::CLI.new.call
