@@ -30,4 +30,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'akadel01-109978'/siamese_rescue_scraper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/allisonkadel/siamese_rescue_scraper.git.
