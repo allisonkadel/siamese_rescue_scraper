@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'akadel01@gmail.com'"]
 
   spec.summary       = %q{Welcome to SiameseRescueScraper. This gem provides you with a command-line application that lets you query the Siamese Rescue Adoption site, a web-based database storing cats that are available for adoption! At runtime, the gem will scrape all of the site's current listings and provide you with details about each cat, including age, sub-breed, gender, and personality. Happy adopting!}
-  spec.homepage      = "https://github.com/'akadel01-109978'/siamese_rescue_scraper"
+  spec.homepage      = "https://github.com/allisonkadel/siamese_rescue_scraper.git"
 
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
