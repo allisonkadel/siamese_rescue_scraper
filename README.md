@@ -1,8 +1,6 @@
 # SiameseRescueScraper
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/siamese_rescue_scraper`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to SiameseRescueScraper. This gem provides you with a command-line application that lets you query the Siamese Rescue Adoption site, a web-based database storing cats that are available for adoption! At runtime, the gem will scrape all of the site's current listings and provide you with details about each cat, including age, sub-breed, gender, and personality. Happy adopting! 
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Execute the 'siamese_rescue_scraper file, found in the 'bin' diretory, to get started. After that, you will be prompted to enter the necessary information to search for cats.
 
 ## Development
 
