@@ -71,7 +71,7 @@ class SiameseRescueScraper::CLI
     elsif input == "search by point"
       puts "\nEnter one of the following:\nSeal\nChocolate\nTortie\nSnowshoe\nBlue\nLynx\nFlame\nLilac\nBalinese"
       response = gets.strip
-      puts "\nHere are the #{input4} point cats:"
+      puts "\nHere are the #{response} point cats:"
       matches = SiameseRescueScraper::Cat.display_matches(SiameseRescueScraper::Cat.search_by_point(response))
       self.more_info(matches)
 
